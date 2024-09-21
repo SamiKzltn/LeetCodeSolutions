@@ -1,0 +1,45 @@
+public class Solution {
+    public int[] PlusOne(int[] digits) {
+        int flag = 0;
+        int[] gecici = new int[digits.Length];
+        bool sondeger = true;
+        bool son2 = false;
+
+        for(int i = digits.Length-1; i >= 0; i--){
+            while(sondeger == true){
+                gecici[i] = digits[i] + 1 + flag;
+                flag = 0;
+                if(gecici[i] == 10){
+                    gecici[i] = 0;
+                    flag = 1;
+                }
+                sondeger = false;
+                son2 = true;
+            }
+            if(son2 != true){
+                gecici[i] = digits[i] + flag;
+                flag = 0;
+                if(gecici[i] == 10){
+                    gecici[i] = 0;
+                    flag = 1;
+                }
+            }
+            son2 = false;
+            
+        }
+        int[] results = new int[digits.Length + flag];
+        if(flag == 1){
+            for(int k = 1; k< gecici.Length+1; k++){
+                results[k] = gecici[k-1];
+            }
+            results[0] = 1;
+        }
+        else{
+            for(int j=0; j< gecici.Length; j++){
+                results[j] = gecici[j];
+            }
+        }
+
+        return results;
+    }
+}
