@@ -1,0 +1,17 @@
+public class Solution {
+    public int MySqrt(int x) {
+        long i=0,j=1;
+        for(i = 0, j = 1; i < x; i++, j++){
+            if(i*i == x){
+                return (int)i;
+            }
+            else if(j*j == x){
+                return (int)j;
+            }
+            else if(i*i < x && x < j*j){
+                return (int)i;
+            }
+        }
+        return (int)i;
+    }
+}
