@@ -1,0 +1,32 @@
+public class Solution {
+
+    public string CharArrayToString(char[] charArray) {
+        return new string(charArray);
+    }
+
+    public string AddBinary(string a, string b) {
+        int flag = 0;
+        int A_deger = a.Length-1;
+        int B_deger = b.Length-1;
+        int lastdeger = Math.Max(a.Length, b.Length);
+
+        char[] chars = new char[lastdeger + 1];
+
+        while (A_deger > -1 || B_deger > -1 || flag > 0) {
+            int sum = flag;
+
+            if (A_deger >= 0) {
+                sum += a[A_deger--] - '0';
+            }
+            if (B_deger >= 0) {
+                sum += b[B_deger--] - '0';
+            }
+            chars[lastdeger--] = (char)(sum % 2 + '0');
+            flag = sum / 2;
+        }
+        if(flag == 1){
+            chars[lastdeger] = '1';
+        }
+        return CharArrayToString(chars[(lastdeger + 1)..]);
+    }
+}
